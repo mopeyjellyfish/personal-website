@@ -1,0 +1,117 @@
+{
+  "main": {
+    "name":"David Hall",
+    "occupation":"Full stack developer",
+    "description":"I program websites and applications of all types",
+    "image":"profilepic.jpg",
+    "bio":"I specialise in working across the entire stack. Some days you can find me updating and maintaining backend python, tinkering with database schemas or working on a new interface component for a webapp. I have been in the field for nearly 10 years and have been loving every minute of it.",
+    "email": "cv@davidkhall.com",
+    "phone": "07919117154",
+    "address":{
+      "city":"Oxford",
+      "county":"Oxfordshire",
+      "country": "United Kingdom"
+    },
+    "website": "davidkhall.com",
+    "resumedownload":"https://davidkhall.com/CV-David_Hall_2017.pdf",
+    "social":[
+      {
+        "name":"twitter",
+        "url":"https://twitter.com/david_k_hall",
+        "className":"fa fa-twitter"
+      },
+      {
+        "name":"linkedin",
+        "url":"https://www.linkedin.com/in/david-hall-b3785981/",
+        "className":"fa fa-linkedin"
+      },
+      {
+        "name":"github",
+        "url":"https://github.com/mopeyjellyfish",
+        "className":"fa fa-github"
+      },
+      {
+        "name":"skype",
+        "url":"skype:davidkhall1992",
+        "className":"fa fa-skype"
+      }
+    ]
+  },
+  "resume":{
+    "work":[
+      {
+        "company":"Black-cow technology",
+        "title":"Full stack Developer",
+        "years":"Sept 2016 - Present",
+        "description":"I work as part of a small team bringing gaming services to businesses of all sizes. I work closely with customers to provide support and continued upgrades completing work on both the frontend stack (node.js, React, redux and bootstrap) and the backend stack (python, pyramid and postgresql)"
+      },
+      {
+        "company":"Kashing! Ltd.",
+        "title":"Full stack Developer",
+        "years":"Sept 2014 - Sept 2016",
+        "description":"I lead a small team of developers that designed software solutions to facilitate payments for businesses, from micro merchants to larger multi-national companies. I was a key member of the team that enabled this start-up to grow and meet business goals."
+      },
+      {
+        "company":"Security Icon",
+        "title":"Software Developer",
+        "years":"Jan 2010 - Sept 2014",
+        "description":"I worked as part of a small team of developers to bring bespoke enterprise level products to global customers. Responsibilities included; reporting project statuses to managers, providing technical support to clients and writing documentation for each project. My responsibilities quickly expanded which resulted in a promotion."
+      }
+    ],
+    "skills":[
+      {
+        "name":"Python",
+        "level":"80%"
+      },
+      {
+        "name":"PostgreSQL",
+        "level":"60%"
+      },
+      {
+        "name":"C",
+        "level":"60%"
+      },
+      {
+        "name":"LUA",
+        "level":"40%"
+      },
+      {
+        "name":"CSS3",
+        "level":"50%"
+      },
+      {
+        "name":"React",
+        "level":"70%"
+      },
+      {
+        "name":"Redux",
+        "level":"70%"
+      },
+      {
+        "name":"Javascript",
+        "level":"70%"
+      },
+      {
+        "name":"jQuery",
+        "level":"80%"
+      }
+    ]
+  },
+  "portfolio":{
+    "projects": [
+      {
+        "title":"This website!",
+        "description":"React based website",
+        "category":"Web design",
+        "tags":"Branding, Web Design, Personal, website",
+        "image":"website.jpg",
+        "url":"http://davidkhall.com",
+        "modal":"#modal-01"
+      }
+    ]
+  },
+  "testimonials":{
+    "testimonials":[
+    ]
+  }
+}
