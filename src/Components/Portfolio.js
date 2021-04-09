@@ -8,7 +8,7 @@ class Portfolio extends Component {
 				 var imageUrl = 'images/portfolio/' + project.image;
 				 return <div className="columns portfolio-item">
 						<div className="item-wrap">
-							 <a href="#" title="">
+							 <a href="#portfolio" title="">
 									<img alt="" src={imageUrl} />
 									<div className="overlay">
 										 <div className="portfolio-item-meta">
