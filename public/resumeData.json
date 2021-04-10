@@ -1,10 +1,10 @@
 {
   "main": {
     "name":"David Hall",
-    "occupation":"Full stack developer",
-    "description":"I program websites and applications of all types",
+    "occupation":"Technical Lead",
+    "description":"building highly scalable frontend and backend gaming solutions for the online gaming market.",
     "image":"profilepic.jpg",
-    "bio":"I specialise in working across the entire stack. Some days you can find me updating and maintaining backend python, tinkering with database schemas or working on a new interface component for a webapp. I have been in the field for nearly 10 years and have been loving every minute of it.",
+    "bio":"I am a hands-on technical lead with over 10 years of experience designing, developing, testing and maintaining software for a variety of architectures. I have worked in numerous roles in the software development life cycle from specification, planning, development, testing, deployment, and support. In my spare time i enjoy playing games, reading and learning new things to keep my technical skills sharp.",
     "email": "cv@davidkhall.com",
     "phone": "07919117154",
     "address":{
@@ -13,7 +13,7 @@
       "country": "United Kingdom"
     },
     "website": "davidkhall.com",
-    "resumedownload":"http://www.davidkhall.com/CV-David_Hall_2018.pdf",
+    "resumedownload":"http://www.davidkhall.com/David-Hall-CV.pdf",
     "social":[
       {
         "name":"twitter",
@@ -41,9 +41,15 @@
     "work":[
       {
         "company":"Black-cow technology",
+        "title":"Technical Lead",
+        "years":"Sept 2018 - Present",
+        "description":"I received a promotion to Technical Lead having taken technical ownership of the implementation of each product at Blackcow. Reporting directly to the CEO I worked to rapidly expand the product line up."
+      },
+      {
+        "company":"Black-cow technology",
         "title":"Full stack Developer",
-        "years":"Sept 2016 - Present",
-        "description":"I work as part of a small team bringing gaming services to businesses of all sizes. I work closely with customers to provide support and continued upgrades completing work on both the frontend stack (node.js, React, redux and bootstrap) and the backend stack (python, pyramid and postgresql)"
+        "years":"Sept 2016 - Sept 2018",
+        "description":"I worked as part of a small team bringing gaming services to businesses of all sizes. I worked closely with customers to provide support and continued upgrades completing work on both the frontend stack (node.js, React, redux and bootstrap) and the backend stack (python, pyramid and postgresql). My biggest successes were refactoring the existing code base to make it easier to maintain, increasing code coverage for testing and improving the performance of the core RGS product to accept 50% more requests per second on comparable hardware reducing customer costs."
       },
       {
         "company":"Kashing! Ltd.",
@@ -61,39 +67,67 @@
     "skills":[
       {
         "name":"Python",
-        "level":"80%"
+        "level":"70%"
       },
       {
         "name":"PostgreSQL",
         "level":"60%"
       },
       {
-        "name":"C",
-        "level":"60%"
-      },
-      {
-        "name":"LUA",
-        "level":"40%"
-      },
-      {
-        "name":"CSS3",
+        "name":"React",
         "level":"50%"
       },
       {
-        "name":"React",
-        "level":"70%"
-      },
-      {
         "name":"Redux",
+        "level":"60%"
+      },
+      {
+        "name":"Docker",
+        "level":"50%"
+      },
+      {
+        "name":"Git",
+        "level":"60%"
+      },
+      {
+        "name":"Alembic",
         "level":"70%"
       },
       {
-        "name":"Javascript",
+        "name":"SQLAlchemy",
         "level":"70%"
       },
       {
-        "name":"jQuery",
-        "level":"80%"
+        "name":"Asyncio",
+        "level":"70%"
+      },
+      {
+        "name":"Uvicorn",
+        "level":"65%"
+      },
+      {
+        "name":"Pytest",
+        "level":"70%"
+      },
+      {
+        "name":"AWS",
+        "level":"30%"
+      },
+      {
+        "name":"Netlify",
+        "level":"20%"
+      },
+      {
+        "name":"C",
+        "level":"30%"
+      },
+      {
+        "name":"Redis",
+        "level":"60%"
+      },
+      {
+        "name":"Node",
+        "level":"60%"
       }
     ]
   },
