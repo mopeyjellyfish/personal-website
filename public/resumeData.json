@@ -1,19 +1,19 @@
 {
   "main": {
     "name":"David Hall",
-    "occupation":"Technical Lead",
+    "occupation":"Head of Technology",
     "description":"building highly scalable frontend and backend gaming solutions for the online gaming market.",
     "image":"profilepic.jpg",
     "bio":"I am a hands-on technical lead with over 10 years of experience designing, developing, testing and maintaining software for a variety of architectures. I have worked in numerous roles in the software development life cycle from specification, planning, development, testing, deployment, and support. In my spare time i enjoy playing games, reading and learning new things to keep my technical skills sharp.",
-    "email": "cv@davidkhall.com",
+    "email": "cv@davidhall.tech",
     "phone": "07919117154",
     "address":{
       "city":"Oxford",
       "county":"Oxfordshire",
       "country": "United Kingdom"
     },
-    "website": "davidkhall.com",
-    "resumedownload":"http://www.davidkhall.com/David-Hall-CV.pdf",
+    "website": "davidhall.tech",
+    "resumedownload":"http://www.davidhall.tech/David-Hall-CV.pdf",
     "social":[
       {
         "name":"twitter",
@@ -41,8 +41,14 @@
     "work":[
       {
         "company":"Black-cow technology",
+        "title":"Head of Technology",
+        "years":"Jan 2020 - Present",
+        "description":"I received a promotion to Head of Technology as the company rapidly expands, directing team leaders, over seeing the technical strategy for the company."
+      },
+      {
+        "company":"Black-cow technology",
         "title":"Technical Lead",
-        "years":"Sept 2018 - Present",
+        "years":"Sept 2018 - Jan 2020",
         "description":"I received a promotion to Technical Lead having taken technical ownership of the implementation of each product at Blackcow. Reporting directly to the CEO I worked to rapidly expand the product line up."
       },
       {
@@ -139,8 +145,17 @@
         "category":"Web design",
         "tags":"Branding, Web Design, Personal, website",
         "image":"website.jpg",
-        "url":"http://davidkhall.com",
+        "url":"https://github.com/mopeyjellyfish/personal-website",
         "modal":"#modal-01"
+      },
+      {
+        "title":"Rhubarb - Event bus",
+        "description":"Python library to simplify integrating with messages queues",
+        "category":"Back end",
+        "tags":"Event bus, Kafka, RabbitMQ, Redis, Postgres",
+        "image":"rhubarb.jpg",
+        "url":"https://github.com/mopeyjellyfish/rhubarb",
+        "modal":"#modal-02"
       }
     ]
   },
