@@ -261,21 +261,17 @@
                 <div class="spread">
                   <div class="prose">
                     <p>
-                      I design and build the systems behind our betting and
-                      gaming products. My job spans the architecture and the
-                      code, from choosing how a service should scale to making
-                      it straightforward for the next engineer to change.
+                      I build scalable game servers for single-player and
+                      multiplayer casino games. My work includes integrating AI
+                      into the game technology and engineering the promotions
+                      platform that powers FanCash Spins.
                     </p>
                     <p>
-                      I work with engineering and product teams to decide which
-                      problems are worth solving, where a simpler design will
-                      do, and how to deliver a reliable experience for
-                      customers.
-                    </p>
-                    <p>
-                      Before Fanatics, I led engineering at Black Cow, where I
-                      built game servers and helped operators bring new
-                      promotions to market.
+                      The two systems solve different problems. A single-player
+                      game server handles one player’s session. A multiplayer
+                      server has to keep players in sync as events arrive. The
+                      promotions platform has to deliver the same offer
+                      consistently as more people take part.
                     </p>
                     <a href="#black-cow">Read the Black Cow case study</a>
                   </div>
@@ -406,7 +402,24 @@
                     <dd>Software Developer · Security Icon</dd>
                   </div>
                 </dl>
-                <div class="prose stack">
+                <section class="prose stack">
+                  <h3>AI-assisted software development</h3>
+                  <p>
+                    I use LLM agent swarms to shorten the time between a design
+                    decision and working code. I split independent tasks across
+                    agents so they can progress in parallel. Where one task
+                    depends on another, I use a workflow graph to make that
+                    dependency explicit.
+                  </p>
+                  <p>
+                    Feedback loops let an agent revisit a change after a check
+                    fails. For example, an implementation agent can revise a
+                    patch using a failing test while another agent reviews a
+                    separate change. That gives me smaller pieces of work to
+                    verify and integrate.
+                  </p>
+                </section>
+                <div class="prose stack" id="technical-skills">
                   <h3>Technical skills</h3>
                   <p>
                     Python, PostgreSQL, Redis, Kafka, RabbitMQ, React, Docker
@@ -416,6 +429,44 @@
                     >Download my CV (PDF)</a
                   >
                 </div>
+                <section class="prose stack">
+                  <h3>
+                    Current AI tooling for these workflows (November 2026)
+                  </h3>
+                  <ul>
+                    <li>
+                      <a
+                        href="https://docs.langchain.com/oss/python/langgraph/overview"
+                        >LangGraph</a
+                      >
+                      models dependencies as a stateful graph and can resume
+                      work from checkpoints.
+                    </li>
+                    <li>
+                      <a href="https://adk.dev/2.0/"
+                        >Google Agent Development Kit (ADK) 2.0</a
+                      >
+                      supports branching graphs, iterative loops and agents that
+                      coordinate subagents.
+                    </li>
+                    <li>
+                      <a
+                        href="https://code.claude.com/docs/en/agent-sdk/subagents"
+                        >Claude Agent SDK</a
+                      >
+                      lets a parent agent delegate a focused task to a subagent
+                      with its own context.
+                    </li>
+                    <li>
+                      <a
+                        href="https://modelcontextprotocol.io/docs/learn/architecture"
+                        >Model Context Protocol (MCP)</a
+                      >
+                      gives agents a standard interface for discovering tools
+                      and accessing resources.
+                    </li>
+                  </ul>
+                </section>
               </article>
               <article id="contact" data-path="profile/contact">
                 <p class="meta">Contact</p>

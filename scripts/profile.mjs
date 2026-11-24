@@ -28,9 +28,11 @@ export function profileFiles(document) {
     filter: "a",
     replacement(label, anchor) {
       const href = anchor.getAttribute("href");
-      return (
-        "\n\n[" + compact(label) + "](" + new URL(href, origin).href + ")\n\n"
-      );
+      const link =
+        "[" + compact(label) + "](" + new URL(href, origin).href + ")";
+      return anchor.parentNode.nodeName === "LI"
+        ? link
+        : "\n\n" + link + "\n\n";
     },
   });
   markdown.addRule("contactLinks", {

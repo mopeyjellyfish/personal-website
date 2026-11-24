@@ -62,7 +62,7 @@ export async function writeCV(document, destination) {
   pdf.moveDown(0.45);
   for (const row of positions.slice(4)) body(role(row));
   section("Technical skills and open source");
-  body(text(document.querySelector("#experience .stack p")));
+  body(text(document.querySelector("#technical-skills p")));
   body(
     "Rhubarb — " +
       text(document.querySelector("#rhubarb .prose p")) +
