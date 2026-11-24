@@ -61,3 +61,18 @@ test("the discoverable Markdown is a plain-text account of the same career evide
     /True colour|<canvas|Tune signal|Profile in Markdown/i,
   );
 });
+
+test("text exports preserve UTF-8 punctuation and format related contact links as a list", async () => {
+  const decoder = new TextDecoder("utf-8", { fatal: true });
+  for (const filename of ["profile.md", "llms.txt"]) {
+    const content = decoder.decode(await readFile(new URL(filename, output)));
+    assert.equal(content.split("\n")[0], "# David Hall — Principal Engineer");
+    assert.doesNotMatch(content, /â€|Ã¢|Â·|\uFFFD/);
+  }
+  const profile = await readFile(new URL("profile.md", output), "utf8");
+  assert.match(
+    profile,
+    /- \[Download CV \(PDF\)\][^\n]+\n- \[GitHub[^\n]+\n- \[LinkedIn/,
+  );
+  assert.doesNotMatch(profile, /## Get in touch\n\nContact\n/);
+});

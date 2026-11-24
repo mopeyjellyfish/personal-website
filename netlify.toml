@@ -14,3 +14,8 @@
   for = "/"
   [headers.values]
     Link = '</profile.md>; rel="alternate"; type="text/markdown", </llms.txt>; rel="describedby"'
+
+[[headers]]
+  for = "/llms.txt"
+  [headers.values]
+    Content-Type = "text/plain; charset=utf-8"

@@ -33,6 +33,16 @@ export function profileFiles(document) {
       );
     },
   });
+  markdown.addRule("contactLinks", {
+    filter: (node) => node.classList.contains("contact-links"),
+    replacement(_, group) {
+      const links = Array.from(group.querySelectorAll("a"), (anchor) => {
+        const url = new URL(anchor.getAttribute("href"), origin);
+        return "- [" + compact(anchor.textContent) + "](" + url.href + ")";
+      });
+      return "\n\n" + links.join("\n") + "\n\n";
+    },
+  });
   const title = "# " + person.name + " — " + person.jobTitle;
   const intro = compact(document.getElementById("profile-summary").textContent);
   const sections = [title, intro];
@@ -50,6 +60,9 @@ export function profileFiles(document) {
       '.metrics, #profile-summary, a[href="profile.md"]',
     ))
       repeat.remove();
+    // The HTML eyebrow repeats the heading in these two text-only sections.
+    if (id === "experience" || id === "contact")
+      article.querySelector(".meta").remove();
     const heading = article.querySelector("h2");
     article.insertBefore(heading, article.firstChild);
     sections.push(markdown.turndown(article.innerHTML));

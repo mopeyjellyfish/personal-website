@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "start": "npm run build && python3 -m http.server 3000 --directory build",
+    "start": "npm run build && python3 scripts/serve.py 3000 --directory build",
     "build": "node scripts/build.mjs",
     "test": "node --test scripts/site.test.mjs"
   },
