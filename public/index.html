@@ -1,25 +1,473 @@
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-		<link rel="stylesheet" href="%PUBLIC_URL%/css/default.css">
-		<link rel="stylesheet" href="%PUBLIC_URL%/css/layout.css">
-		<link rel="stylesheet" href="%PUBLIC_URL%/css/media-queries.css">
-		<link rel="stylesheet" href="%PUBLIC_URL%/css/magnific-popup.css">
-		<title>David Hall - CV</title>
-	</head>
-	<body>
-		<div id="root"></div>
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-		<script>window.jQuery || document.write('<script src="js/jquery-1.10.2.min.js"><\/script>')</script>
-		<script type="text/javascript" src="js/jquery-migrate-1.2.1.min.js"></script>
-
-		<script src="js/jquery.flexslider.js"></script>
-		<script src="js/waypoints.js"></script>
-		<script src="js/jquery.fittext.js"></script>
-		<script src="js/magnific-popup.js"></script>
-		<script src="js/init.js"></script>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <meta name="theme-color" content="#080b0c" />
+    <link rel="icon" href="workbench/jellyfish.png" type="image/png" />
+    <link
+      rel="preload"
+      href="workbench/room.webp"
+      fetchpriority="high"
+      as="image"
+    />
+    <link rel="stylesheet" href="workbench/console.css" />
+    <link rel="apple-touch-icon" href="workbench/touch-icon.png" />
+    <link
+      rel="alternate"
+      type="text/markdown"
+      href="profile.md"
+      title="David Hall’s engineering profile"
+    />
+    <link rel="describedby" type="text/plain" href="llms.txt" />
+    <link rel="canonical" href="https://davidhall.tech/" />
+    <meta property="og:title" content="David Hall — The Workbench" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:description"
+      content="Enter the workbench of David Hall, Principal Engineer at Fanatics Betting and Gaming."
+    />
+    <meta
+      property="og:image"
+      content="https://davidhall.tech/workbench/personal-site.webp"
+    />
+    <meta property="og:image:alt" content="David Hall’s amber CRT workbench" />
+    <title>
+      David Hall — Principal Engineer at Fanatics Betting and Gaming
+    </title>
+    <meta
+      name="description"
+      content="David Hall is a Principal Engineer at Fanatics Betting and Gaming and former Head of Technology at Black Cow. Explore his distributed systems, gaming platforms and open-source work."
+    />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "David Hall",
+        "jobTitle": "Principal Engineer",
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Fanatics Betting and Gaming"
+        },
+        "sameAs": [
+          "https://github.com/mopeyjellyfish",
+          "https://www.linkedin.com/in/david-hall-b3785981/"
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <main class="stage">
+      <div class="world" aria-hidden="true">
+        <img
+          class="room"
+          src="workbench/room.webp"
+          width="1672"
+          height="941"
+          fetchpriority="high"
+          alt=""
+        /><canvas id="atmosphere" width="1672" height="941"></canvas>
+      </div>
+      <div class="grade" aria-hidden="true"></div>
+      <section class="landing" id="workbench" aria-labelledby="name">
+        <header>
+          <div class="brand">
+            <img
+              src="workbench/jellyfish.png"
+              width="38"
+              height="38"
+              alt=""
+            /><span>dh.</span>
+          </div>
+          <nav aria-label="Portfolio">
+            <a href="#experience" data-enter="4">Experience</a
+            ><a href="#contact" data-enter="5">Contact</a>
+          </nav>
+        </header>
+        <button
+          class="tuning"
+          hidden
+          aria-label="Tune oscilloscope. Current trace: Signal"
+        ></button>
+        <div class="identity">
+          <div class="eyebrow">Platform engineering</div>
+          <h1 id="name">DAVID <span>HALL</span></h1>
+          <p>
+            Principal Engineer at <strong>Fanatics Betting and Gaming.</strong>
+          </p>
+        </div>
+        <footer>
+          <a class="enter" href="#black-cow" data-enter="0"
+            ><kbd aria-hidden="true">↵</kbd> Enter terminal</a
+          ><span class="scrollhint">or scroll to approach</span
+          ><button
+            class="motion"
+            aria-pressed="false"
+            aria-label="Pause idle animation"
+          >
+            <span aria-hidden="true">Ⅱ</span>
+          </button>
+        </footer>
+      </section>
+      <div class="screen">
+        <div class="bezel" aria-hidden="true"></div>
+        <section class="console" aria-label="Portfolio terminal">
+          <header class="systembar">
+            <div class="os">
+              <img
+                src="workbench/jellyfish.png"
+                width="29"
+                height="29"
+                alt=""
+              />
+              DH/OS
+            </div>
+            <button
+              class="files-toggle"
+              aria-expanded="false"
+              aria-controls="directory"
+            >
+              Files <span aria-hidden="true">▾</span></button
+            ><span class="host">david@workbench</span
+            ><time aria-label="Local time"></time
+            ><button id="exit" title="Return to the workbench">
+              Exit <span>[esc]</span>
+            </button>
+          </header>
+          <div class="workspace">
+            <nav id="directory" class="directory" aria-label="Terminal files">
+              <div class="label">Directory</div>
+              <div class="treegroup">~/work</div>
+              <a href="#black-cow" data-file="0"><span>01</span> Black Cow</a
+              ><a href="#fanatics" data-file="1"><span>02</span> Fanatics</a
+              ><a href="#rhubarb" data-file="2"><span>03</span> Rhubarb</a
+              ><a href="#personal-site" data-file="3"
+                ><span>04</span> Personal site</a
+              >
+              <div class="treegroup">~/profile</div>
+              <a href="#experience" data-file="4"><span>05</span> Experience</a
+              ><a href="#contact" data-file="5"><span>06</span> Contact</a>
+              <div class="dirfoot">davidhall.tech</div>
+            </nav>
+            <div class="reader" tabindex="0" aria-label="Open file contents">
+              <div class="path">
+                <span class="file-marker" aria-hidden="true"></span>
+                <span id="path"></span>
+              </div>
+              <article id="black-cow" data-path="work/black-cow">
+                <p class="meta">Head of Technology · Sep 2021 – Jun 2023</p>
+                <h2>Black Cow</h2>
+                <div class="spread">
+                  <div class="prose">
+                    <p>
+                      I designed the rules engine and wallet integrations for
+                      FreeBets, then led our teams through certification.
+                      Operators could launch a promotion in
+                      <strong>under 30 minutes</strong>. It used to take days.
+                    </p>
+                    <p>
+                      I owned technology strategy for a modular iGaming platform
+                      serving tier-one operators in regulated markets. I
+                      reported to the board and stayed hands-on in the code.
+                    </p>
+                  </div>
+                  <figure>
+                    <div class="picture">
+                      <img
+                        loading="lazy"
+                        decoding="async"
+                        width="1152"
+                        height="768"
+                        src="workbench/platform.webp"
+                        alt="Illustration of a processor on stacked circuit boards under a workbench lamp."
+                      />
+                    </div>
+                    <figcaption>
+                      <span class="caption"
+                        >Platform architecture / illustration</span
+                      ><button class="mode" aria-pressed="false">
+                        True colour
+                      </button>
+                    </figcaption>
+                  </figure>
+                </div>
+                <dl class="metrics">
+                  <div>
+                    <dt>Bet volume</dt>
+                    <dd>Millions<span>per day</span></dd>
+                  </div>
+                  <div>
+                    <dt>Engine latency</dt>
+                    <dd>&lt;100<span>ms</span></dd>
+                  </div>
+                  <div>
+                    <dt>Team growth</dt>
+                    <dd>2 → 20<span>engineers</span></dd>
+                  </div>
+                </dl>
+                <dl class="results">
+                  <div>
+                    <dt>60% less onboarding effort</dt>
+                    <dd>
+                      I built a plug-and-play operator API and standardised the
+                      integration process, cutting the engineering effort needed
+                      to onboard an operator by 60%.
+                    </dd>
+                  </div>
+                  <div>
+                    <dt>Millions of bets per day</dt>
+                    <dd>
+                      I built a stateless random number generation engine that
+                      handled millions of bets per day with response times under
+                      100 ms. I also built an event-driven multiplayer game
+                      server for real-time social play.
+                    </dd>
+                  </div>
+                  <div>
+                    <dt>Reusable jackpot services</dt>
+                    <dd>
+                      I designed a progressive-jackpot service that could
+                      support multiple games and delivered bespoke jackpot games
+                      adopted by tier-one brands.
+                    </dd>
+                  </div>
+                  <div>
+                    <dt>2 to 20 engineers</dt>
+                    <dd>
+                      I grew engineering from 2 to 20 people and led the
+                      cross-functional organisation, with responsibility for
+                      hiring, architecture and quality. I coached engineers in
+                      system design, test-driven development and technical
+                      leadership.
+                    </dd>
+                  </div>
+                  <div>
+                    <dt>50% more requests per second</dt>
+                    <dd>
+                      Earlier, as a developer at Black Cow, I improved the core
+                      remote gaming server’s throughput by 50% on comparable
+                      hardware. That gave operators more capacity from the same
+                      class of machine.
+                    </dd>
+                  </div>
+                </dl>
+              </article>
+              <article id="fanatics" data-path="work/fanatics">
+                <p class="meta">Current role / Principal Engineer</p>
+                <h2>Fanatics Betting and Gaming</h2>
+                <div class="spread">
+                  <div class="prose">
+                    <p>
+                      I design and build the systems behind our betting and
+                      gaming products. My job spans the architecture and the
+                      code, from choosing how a service should scale to making
+                      it straightforward for the next engineer to change.
+                    </p>
+                    <p>
+                      I work with engineering and product teams to decide which
+                      problems are worth solving, where a simpler design will
+                      do, and how to deliver a reliable experience for
+                      customers.
+                    </p>
+                    <p>
+                      Before Fanatics, I led engineering at Black Cow, where I
+                      built game servers and helped operators bring new
+                      promotions to market.
+                    </p>
+                    <a href="#black-cow">Read the Black Cow case study</a>
+                  </div>
+                  <figure>
+                    <div class="picture meter-study">
+                      <img
+                        loading="lazy"
+                        src="workbench/room.webp"
+                        alt="Two analogue meters and a power supply beside the workbench monitor."
+                      />
+                    </div>
+                    <figcaption>
+                      <span class="caption">Workbench / instrumentation</span>
+                    </figcaption>
+                  </figure>
+                </div>
+              </article>
+              <article id="rhubarb" data-path="work/rhubarb">
+                <p class="meta">Open source / Python</p>
+                <h2>Rhubarb</h2>
+                <div class="spread">
+                  <div class="prose">
+                    <p>
+                      I wrote Rhubarb to give Python applications a common
+                      interface for message queues. It supports Kafka, RabbitMQ,
+                      Redis and PostgreSQL.
+                    </p>
+                    <a href="https://github.com/mopeyjellyfish/rhubarb"
+                      >Read the source</a
+                    >
+                  </div>
+                  <figure>
+                    <div class="picture">
+                      <img
+                        loading="lazy"
+                        decoding="async"
+                        width="1100"
+                        height="733"
+                        src="workbench/rhubarb.webp"
+                        alt="Cut rhubarb stalks from the original project image."
+                      />
+                    </div>
+                    <figcaption>
+                      <span class="caption">Rhubarb / project image</span
+                      ><button class="mode" aria-pressed="false">
+                        True colour
+                      </button>
+                    </figcaption>
+                  </figure>
+                </div>
+              </article>
+              <article id="personal-site" data-path="work/personal-site">
+                <p class="meta">Interface design / Frontend engineering</p>
+                <h2>Personal site</h2>
+                <div class="spread">
+                  <div class="prose">
+                    <p>
+                      I built this portfolio around a workbench you can explore.
+                      Scrolling moves you through the glass of a CRT and into a
+                      terminal holding my work. Tune the oscilloscope and you
+                      might find my jellyfish.
+                    </p>
+                    <a href="https://github.com/mopeyjellyfish/personal-website"
+                      >View the repository</a
+                    >
+                  </div>
+                  <figure>
+                    <div class="picture color">
+                      <img
+                        loading="lazy"
+                        decoding="async"
+                        width="1440"
+                        height="900"
+                        src="workbench/personal-site.webp"
+                        alt="David Hall’s portfolio with the illuminated amber monitor, keyboard and instrument rack."
+                      />
+                    </div>
+                    <figcaption>
+                      <span class="caption">The workbench / opening scene</span
+                      ><button class="mode" aria-pressed="true">
+                        True colour
+                      </button>
+                    </figcaption>
+                  </figure>
+                </div>
+              </article>
+              <article id="experience" data-path="profile/experience">
+                <p class="meta">Career history</p>
+                <h2>Experience</h2>
+                <div class="prose summary">
+                  <p id="profile-summary">
+                    I’m a Principal Engineer at Fanatics Betting and Gaming. As
+                    Head of Technology at Black Cow, I grew engineering from 2
+                    to 20 people and built a game engine that handled millions
+                    of bets per day with response times under 100 ms. My
+                    background spans distributed systems, platform architecture
+                    and technical leadership in regulated gaming.
+                  </p>
+                  <p>
+                    I’m interested in bringing my distributed systems experience
+                    to AI infrastructure and model serving, where latency,
+                    reliability and cost all shape the product.
+                  </p>
+                </div>
+                <dl class="results">
+                  <div>
+                    <dt>Current</dt>
+                    <dd>Principal Engineer · Fanatics Betting and Gaming</dd>
+                  </div>
+                  <div>
+                    <dt>Sep 2021 – Jun 2023</dt>
+                    <dd>Head of Technology · Black Cow Technology, Oxford</dd>
+                  </div>
+                  <div>
+                    <dt>From Sep 2018</dt>
+                    <dd>Technical Lead · Black Cow Technology</dd>
+                  </div>
+                  <div>
+                    <dt>Sep 2016 – Sep 2018</dt>
+                    <dd>Full Stack Developer · Black Cow Technology</dd>
+                  </div>
+                  <div>
+                    <dt>Sep 2014 – Sep 2016</dt>
+                    <dd>Full Stack Developer · Kashing!</dd>
+                  </div>
+                  <div>
+                    <dt>Jan 2010 – Sep 2014</dt>
+                    <dd>Software Developer · Security Icon</dd>
+                  </div>
+                </dl>
+                <div class="prose stack">
+                  <h3>Technical skills</h3>
+                  <p>
+                    Python, PostgreSQL, Redis, Kafka, RabbitMQ, React, Docker
+                    and AWS.
+                  </p>
+                  <a type="application/pdf" href="David-Hall-CV.pdf"
+                    >Download my CV (PDF)</a
+                  >
+                </div>
+              </article>
+              <article id="contact" data-path="profile/contact">
+                <p class="meta">Contact</p>
+                <h2>Get in touch</h2>
+                <div class="spread">
+                  <div class="prose">
+                    <p>
+                      For engineering opportunities or a conversation about my
+                      work, email me directly.
+                    </p>
+                    <a class="email" href="mailto:cv@davidhall.tech"
+                      >cv@davidhall.tech</a
+                    >
+                    <div class="contact-links">
+                      <a type="application/pdf" href="David-Hall-CV.pdf"
+                        >Download CV (PDF)</a
+                      ><a href="profile.md" type="text/markdown"
+                        >Read my profile in Markdown</a
+                      >
+                      <a href="https://github.com/mopeyjellyfish"
+                        >GitHub / mopeyjellyfish</a
+                      ><a
+                        href="https://www.linkedin.com/in/david-hall-b3785981/"
+                        >LinkedIn / David Hall</a
+                      >
+                    </div>
+                  </div>
+                  <figure class="contact-avatar">
+                    <img
+                      loading="lazy"
+                      src="workbench/arcade.webp"
+                      width="256"
+                      height="256"
+                      alt="My amber pixel-art jellyfish avatar"
+                    />
+                    <figcaption class="caption">@mopeyjellyfish</figcaption>
+                  </figure>
+                </div>
+              </article>
+            </div>
+          </div>
+          <footer class="commandbar">
+            <div>
+              <span class="prompt">david:~$</span> <span id="command"></span
+              ><i aria-hidden="true"></i>
+            </div>
+            <span class="keys"><kbd>1–6</kbd> Open file</span>
+          </footer>
+        </section>
+      </div>
+    </main>
+    <div class="travel" aria-hidden="true"></div>
+    <script type="module" src="workbench/console.js"></script>
+  </body>
 </html>

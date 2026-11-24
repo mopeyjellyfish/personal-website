@@ -1,17 +1,15 @@
 {
-  "name": "cv-website",
-  "version": "0.1.0",
+  "name": "davidhall-tech",
+  "version": "1.0.0",
   "private": true,
-  "dependencies": {
-    "jquery": "^3.1.1",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-scripts": "1.0.17"
-  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "start": "npm run build && python3 -m http.server 3000 --directory build",
+    "build": "node scripts/build.mjs",
+    "test": "node --test scripts/site.test.mjs"
+  },
+  "devDependencies": {
+    "@mixmark-io/domino": "2.2.0",
+    "pdfkit": "0.21.0",
+    "turndown": "7.2.5"
   }
 }

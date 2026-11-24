@@ -1,0 +1,16 @@
+[build]
+  command = "npm run build"
+  publish = "build"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[[headers]]
+  for = "/profile.md"
+  [headers.values]
+    Content-Type = "text/markdown; charset=utf-8"
+
+[[headers]]
+  for = "/"
+  [headers.values]
+    Link = '</profile.md>; rel="alternate"; type="text/markdown", </llms.txt>; rel="describedby"'
