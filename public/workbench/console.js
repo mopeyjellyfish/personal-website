@@ -1,5 +1,6 @@
 import {
   drawInstruments,
+  drawTerminalScope,
   enableTuning,
   updateTuningTarget,
 } from "./instruments.js";
@@ -21,7 +22,7 @@ const fileButtons = [...document.querySelectorAll("[data-file]")];
 const pages = [...reader.querySelectorAll("article")];
 const directory = select(".directory");
 const menu = select(".files-toggle");
-const motion = select(".motion");
+const motionControls = document.querySelectorAll(".motion, .terminal-motion");
 let activeFile = 0,
   engaged = false,
   entering = false;
@@ -31,6 +32,7 @@ let paused = false,
 
 function setMenu(open, focus = false) {
   directory.classList.toggle("open", open);
+  if (open) requestAnimationFrame(renderScope);
   menu.setAttribute("aria-expanded", String(open));
   if (focus)
     (open ? fileButtons[activeFile] : menu).focus({ preventScroll: true });
@@ -50,6 +52,96 @@ function focusFile() {
   heading.tabIndex = -1;
   heading.focus({ preventScroll: true });
 }
+const finder = select("#file-search");
+const query = select("#query");
+const matches = select(".matches");
+const launch = select("#launch");
+const scopeCanvas = select(".scope-channel canvas");
+const scopeCtx = scopeCanvas.getContext("2d");
+let scopeTimer;
+
+function renderScope() {
+  clearTimeout(scopeTimer);
+  if (
+    !scopeCtx ||
+    !engaged ||
+    document.hidden ||
+    !scopeCanvas.clientWidth ||
+    finder.open
+  )
+    return;
+  drawTerminalScope(scopeCtx, phase);
+  if (!paused && !reduced.matches) {
+    scopeTimer = setTimeout(() => {
+      phase += 0.09;
+      renderScope();
+    }, 90);
+  }
+}
+
+function filterFiles() {
+  const term = query.value
+    .trim()
+    .toLowerCase()
+    .replace(/^open\s+/, "")
+    .replace(/^~\//, "");
+  for (const [i, button] of Array.from(matches.children).entries()) {
+    button.hidden = !(
+      pages[i].dataset.path +
+      " " +
+      pages[i].querySelector("h2").textContent
+    )
+      .toLowerCase()
+      .includes(term);
+  }
+  select(".no-matches").hidden = !!matches.querySelector(
+    "button:not([hidden])",
+  );
+}
+
+for (const [i, page] of pages.entries()) {
+  const result = document.createElement("button");
+  const filename = document.createElement("strong");
+  filename.textContent = page.querySelector("h2").textContent;
+  const path = document.createElement("small");
+  path.textContent = "~/" + page.dataset.path;
+  result.append(filename, path);
+  result.onclick = () => {
+    finder.close();
+    goInside(i);
+  };
+  matches.append(result);
+}
+launch.onclick = () => {
+  setMenu(false);
+  query.value = "";
+  filterFiles();
+  finder.showModal();
+  query.focus();
+  renderScope();
+};
+select(".dismiss").onclick = () => finder.close();
+finder.addEventListener("close", renderScope);
+query.oninput = filterFiles;
+finder.onkeydown = (e) => {
+  const available = [...matches.querySelectorAll("button:not([hidden])")];
+  if (!available.length) return;
+  if (e.key === "Enter" && e.target === query) {
+    e.preventDefault();
+    available[0].click();
+  } else if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+    e.preventDefault();
+    const index = available.indexOf(e.target);
+    const next =
+      index < 0
+        ? e.key === "ArrowDown"
+          ? 0
+          : available.length - 1
+        : (index + available.length + (e.key === "ArrowDown" ? 1 : -1)) %
+          available.length;
+    available[next].focus();
+  }
+};
 function openFile(index) {
   const previous = activeFile;
   activeFile = index;
@@ -100,12 +192,17 @@ document.querySelectorAll(".mode").forEach((button) => {
         .classList.toggle("color"),
     );
 });
-motion.onclick = () => {
+function toggleMotion() {
   paused = !paused;
-  motion.setAttribute("aria-pressed", String(paused));
-  motion.querySelector("span").textContent = paused ? "▷" : "Ⅱ";
+  stage.toggleAttribute("data-paused", paused);
+  renderScope();
+  for (const button of motionControls) {
+    button.setAttribute("aria-pressed", String(paused));
+    button.querySelector("span").textContent = paused ? "▷" : "Ⅱ";
+  }
   requestFrame();
-};
+}
+for (const button of motionControls) button.onclick = toggleMotion;
 const atmosphere = select("#atmosphere");
 const ctx = atmosphere.getContext("2d");
 const particles = Array.from({ length: 84 }, (_, i) => ({
@@ -180,6 +277,7 @@ function measure() {
   top = phone ? -height * 0.018 : (height - 941 * initialScale) / 2;
   endScale = Math.max(width / 346, height / 225) * 1.045;
   if (docked) window.scrollTo(0, limit);
+  renderScope();
   setMenu(false);
   requestFrame();
 }
@@ -265,6 +363,7 @@ function render(now) {
   world.style.visibility = finished ? "hidden" : "visible";
   if (engaged !== finished) {
     engaged = finished;
+    renderScope();
     screen.inert = !finished;
     screen.setAttribute("aria-hidden", String(!finished));
     if (finished) {
@@ -330,6 +429,7 @@ function goOutside(instant = false) {
   travel(false, instant);
 }
 function restoreRoute() {
+  if (finder.open) finder.close();
   const aliases = {
     work: "black-cow",
     portfolio: "black-cow",
@@ -363,7 +463,13 @@ for (const type of ["wheel", "touchstart"]) {
   );
 }
 window.addEventListener("keydown", (e) => {
-  if (e.altKey || e.metaKey || e.ctrlKey || e.defaultPrevented) return;
+  if (finder.open || e.altKey || e.metaKey || e.ctrlKey || e.defaultPrevented)
+    return;
+  if (engaged && e.key === "/") {
+    e.preventDefault();
+    launch.click();
+    return;
+  }
   if (
     ["PageDown", "PageUp", "Home", "End", "ArrowDown", "ArrowUp", " "].includes(
       e.key,
@@ -407,6 +513,11 @@ window.addEventListener(
 window.addEventListener("resize", measure);
 window.addEventListener("scroll", requestFrame, { passive: true });
 reduced.addEventListener("change", requestFrame);
+for (const [target, event] of [
+  [document, "visibilitychange"],
+  [reduced, "change"],
+])
+  target.addEventListener(event, renderScope);
 document.addEventListener("visibilitychange", requestFrame);
 setInterval(() => {
   if (engaged) requestFrame();
@@ -418,6 +529,7 @@ screen.setAttribute("aria-hidden", "true");
 enableTuning(
   () => phase,
   () => {
+    renderScope();
     lastDraw = -Infinity;
     requestFrame();
   },

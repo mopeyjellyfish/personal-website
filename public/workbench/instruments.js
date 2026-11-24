@@ -19,13 +19,18 @@ export function updateTuningTarget(cx, cy, scale, available) {
 }
 
 export function enableTuning(getTime, redraw) {
-  glassButton.onclick = () => {
+  const terminalButton = document.querySelector(".scope-channel");
+  glassButton.onclick = terminalButton.onclick = () => {
     channel = (channel + 1) % modes.length;
     tunedAt = getTime();
-    glassButton.setAttribute(
-      "aria-label",
-      "Tune oscilloscope. Current trace: " + modes[channel],
-    );
+    for (const button of [glassButton, terminalButton])
+      button.setAttribute(
+        "aria-label",
+        "Tune oscilloscope. Current trace: " + modes[channel],
+      );
+    terminalButton.querySelector(".scope-id").textContent =
+      "CH " + (channel + 1);
+    terminalButton.querySelector(".scope-name").textContent = modes[channel];
     redraw();
   };
   glassButton.addEventListener("pointerenter", () => {
@@ -188,6 +193,21 @@ function drawTrace(ctx, time, mode) {
     }
   }
   ctx.stroke();
+}
+
+export function drawTerminalScope(ctx, time) {
+  const { width, height } = ctx.canvas;
+  ctx.clearRect(0, 0, width, height);
+  ctx.save();
+  ctx.translate(width / 2, height / 2);
+  ctx.scale(width / 380, height / 122);
+  ctx.translate(-scope.x, -scope.y);
+  ctx.strokeStyle = "#ffcc83";
+  ctx.lineWidth = 2;
+  ctx.shadowColor = "#ff9c39";
+  ctx.shadowBlur = 5;
+  drawTrace(ctx, time, channel);
+  ctx.restore();
 }
 
 export function drawInstruments(ctx, time) {

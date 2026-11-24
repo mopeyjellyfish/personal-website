@@ -150,7 +150,19 @@
               <div class="treegroup">~/profile</div>
               <a href="#experience" data-file="4"><span>05</span> Experience</a
               ><a href="#contact" data-file="5"><span>06</span> Contact</a>
-              <div class="dirfoot">davidhall.tech</div>
+              <button
+                class="scope-channel"
+                aria-label="Tune oscilloscope. Current trace: Signal"
+              >
+                <span class="scope-face"
+                  ><canvas width="360" height="112" aria-hidden="true"></canvas
+                ></span>
+                <span class="scope-legend"
+                  ><span class="scope-id">CH 1</span
+                  ><span class="scope-name">Signal</span
+                  ><span aria-hidden="true">↻</span></span
+                >
+              </button>
             </nav>
             <div class="reader" tabindex="0" aria-label="Open file contents">
               <div class="path">
@@ -276,15 +288,18 @@
                     <a href="#black-cow">Read the Black Cow case study</a>
                   </div>
                   <figure>
-                    <div class="picture meter-study">
+                    <div class="picture">
                       <img
                         loading="lazy"
-                        src="workbench/room.webp"
-                        alt="Two analogue meters and a power supply beside the workbench monitor."
+                        src="workbench/patchbay.webp"
+                        alt="Amber patch cables branch across the sockets of an analogue routing panel."
                       />
                     </div>
                     <figcaption>
-                      <span class="caption">Workbench / instrumentation</span>
+                      <span class="caption">Signal routing / illustration</span
+                      ><button class="mode" aria-pressed="false">
+                        True colour
+                      </button>
                     </figcaption>
                   </figure>
                 </div>
@@ -509,15 +524,51 @@
             </div>
           </div>
           <footer class="commandbar">
-            <div>
+            <button
+              id="launch"
+              aria-haspopup="dialog"
+              aria-controls="file-search"
+              aria-label="Find a terminal file"
+            >
               <span class="prompt">david:~$</span> <span id="command"></span
               ><i aria-hidden="true"></i>
-            </div>
-            <span class="keys"><kbd>1–6</kbd> Open file</span>
+              <span class="find-hint" aria-hidden="true"
+                ><kbd>/</kbd> Find</span
+              >
+            </button>
+            <span class="keys"><kbd>1–6</kbd> Open</span>
+            <button
+              class="terminal-motion"
+              aria-pressed="false"
+              aria-label="Pause idle animation"
+              title="Pause or resume idle animation"
+            >
+              <span aria-hidden="true">Ⅱ</span>
+            </button>
           </footer>
         </section>
       </div>
     </main>
+    <dialog id="file-search" aria-labelledby="search-title">
+      <header>
+        <h2 id="search-title">Open file</h2>
+        <button type="button" class="dismiss" aria-label="Close file search">
+          Esc
+        </button>
+      </header>
+      <label class="query"
+        ><span aria-hidden="true">~/</span
+        ><input
+          type="search"
+          id="query"
+          aria-label="Find a terminal file"
+          placeholder="Search by name or path"
+          autocomplete="off"
+          spellcheck="false"
+      /></label>
+      <div class="matches"></div>
+      <p class="no-matches" role="status" hidden>No matching files.</p>
+    </dialog>
     <div class="travel" aria-hidden="true"></div>
     <script type="module" src="workbench/console.js"></script>
   </body>
